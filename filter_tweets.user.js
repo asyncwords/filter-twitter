@@ -110,7 +110,13 @@ function prepareUI() {
     anchor.setAttribute("id", "global-nav-filters-link");
     anchor.setAttribute("href", "");
     anchor.addEventListener("click", toggleFilterBox, false);
-    anchor.innerHTML = "Filters";
+    
+    var innerAnchorSpan = document.createElement("span");
+    innerAnchorSpan.setAttribute("id", "global-nav-filters-link-span");
+    innerAnchorSpan.className = "text";
+    innerAnchorSpan.innerHTML = "Filters";
+    
+    anchor.appendChild(innerAnchorSpan);
     list.appendChild(anchor);
     
     menu.appendChild(list);
@@ -404,7 +410,7 @@ function clearFilters () {
         unmatchedStatuses[i].style.display = 'block';
     }
     
-    var linkFilters = document.getElementById("global-nav-filters-link");
+    var linkFilters = document.getElementById("global-nav-filters-link-span");
     if (matchedStatuses.length > 0) {
         linkFilters.innerHTML = "Filters (" + matchedStatuses.length + ")";
     } else {
